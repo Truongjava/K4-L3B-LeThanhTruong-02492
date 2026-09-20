@@ -1,0 +1,96 @@
+=== BENCH — chiến lược: HeadingChunker ===
+Corpus   : data\shopee-doi-tra-hoan-tien
+Files    : 15  →  chunks: 561
+Embedder : sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+
+--- Q1 · số liệu ---
+Q      : Đối với đơn hàng giao thực phẩm tươi sống và đông lạnh, người mua có bao nhiêu thời gian để gửi yêu cầu Trả hàng/Hoàn tiền?
+Filter : (không lọc)
+Gold   : 24 giờ kể từ lúc đơn hàng được cập nhật trạng thái 'Giao hàng thành công' (trừ lý do Chưa nhận được hàng).
+Marker : '24 giờ'
+  1. score=+0.770  doc_id=quy-dinh-chung-tra-hang-hoan-tien          audience=buyer   evidence=[✓]
+       1.2. Thời gian tối đa để gửi yêu cầu trả hàng hoàn tiền cho Shopee Thời gian để Shopee t...
+  2. score=+0.672  doc_id=quy-dinh-chung-tra-hang-hoan-tien          audience=buyer   evidence=[ ]
+       1.2. Thời gian tối đa để gửi yêu cầu trả hàng hoàn tiền cho Shopee Bạn vẫn có thể gửi yê...
+  3. score=+0.610  doc_id=huong-dan-gui-yeu-cau-tra-hang             audience=buyer   evidence=[ ]
+       2. Lưu ý Thời gian xử lý Yêu cầu của bạn thường được xử lý trong khoảng 3 - 5 ngày làm v...
+  → gold doc: CÓ · marker: CÓ · hạng chunk chứa đáp án: 1 · điểm: 2/2
+
+--- Q2 · điều kiện + mốc thời gian ---
+Q      : Tính năng Trả hàng COM (đổi ý) áp dụng cho những nhóm người mua nào và từ thời điểm nào?
+Filter : (không lọc)
+Gold   : Từ ngày 24/11/2025, áp dụng cho người mua hạng Kim Cương, Vàng và người dùng đăng ký thành công gói Shopee VIP.
+Marker : '24/11/2025'
+  1. score=+0.784  doc_id=chinh-sach-tra-hang-hoan-tien              audience=buyer   evidence=[ ]
+       4. QUY ĐỊNH BỔ SUNG ĐỐI VỚI CÁC TRƯỜNG HỢP TRẢ HÀNG COM Việc Trả hàng COM được thực hiện...
+  2. score=+0.689  doc_id=chinh-sach-tra-hang-hoan-tien              audience=buyer   evidence=[ ]
+       4.3. Minh bạch thông tin 4.4 Điều khoản loại trừ liên quan đến Trả hàng COM đối với một ...
+  3. score=+0.665  doc_id=dieu-khoan-shopee-mall                     audience=seller  evidence=[ ]
+       2.12.1. Phí Xử Lý Giao Dịch Phí Xử Lý Giao Dịch được áp dụng cho mỗi đơn hàng thành công...
+  → gold doc: KHÔNG · marker: KHÔNG · hạng chunk chứa đáp án: — · điểm: 0/2
+
+--- Q3 · điều kiện — CẦN metadata_filter ---
+Q      : Chi phí vận chuyển chiều hoàn trả sản phẩm do bên nào chịu khi đơn hàng được Shopee chấp thuận trả hàng/hoàn tiền?
+Filter : {'audience': 'seller'}
+Gold   : Người Bán chịu chi phí vận chuyển chiều hoàn trả đối với đơn được Shopee chấp thuận mà KHÔNG do lỗi của Người Mua hoặc đơn vị vận chuyển, và đối với đơn giao không thành công.
+Marker : 'không do lỗi của Người Mua hoặc đơn vị vận chuyển'
+  1. score=+0.836  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[✓]
+       7. TRÁCH NHIỆM VỀ CHI PHÍ VẬN CHUYỂN HOÀN TRẢ SẢN PHẨM CỦA NGƯỜI BÁN 7.1. Người Bán sẽ c...
+  2. score=+0.764  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[ ]
+       7.2. Người Bán sẽ không phải chịu bất kỳ chi phí vận chuyển cho việc trả hàng chiều hoàn...
+  3. score=+0.758  doc_id=dieu-khoan-shopee-mall                     audience=seller  evidence=[ ]
+       1.9.3. Chi phí vận chuyển và xử lý Sản Phẩm Hoàn Trả và giao không thành công: a. Người ...
+  → gold doc: CÓ · marker: CÓ · hạng chunk chứa đáp án: 1 · điểm: 2/2
+
+--- Q4 · quy trình + số liệu ---
+Q      : Mã giảm giá được hoàn lại trong vòng bao lâu sau khi yêu cầu Trả hàng/Hoàn tiền được chấp nhận hoàn tiền?
+Filter : (không lọc)
+Gold   : Trong vòng 48 giờ (không kể Thứ Bảy, Chủ Nhật và ngày lễ), tính từ khi yêu cầu được chấp nhận hoàn tiền.
+Marker : '48 giờ'
+  1. score=+0.750  doc_id=quy-dinh-chung-tra-hang-hoan-tien          audience=buyer   evidence=[✓]
+       2. Quy định chung về việc hoàn lại Mã giảm giá/Shopee Xu khi yêu cầu Trả hàng/Hoàn tiền ...
+  2. score=+0.739  doc_id=thoi-gian-nhan-tien-hoan                   audience=buyer   evidence=[ ]
+       # Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn Nếu bạn gửi yêu cầu THHT sau khi đ...
+  3. score=+0.709  doc_id=quy-dinh-chung-tra-hang-hoan-tien          audience=buyer   evidence=[ ]
+       1.2. Thời gian tối đa để gửi yêu cầu trả hàng hoàn tiền cho Shopee Bạn vẫn có thể gửi yê...
+  → gold doc: CÓ · marker: CÓ · hạng chunk chứa đáp án: 1 · điểm: 2/2
+
+--- Q5 · liệt kê ---
+Q      : Khi đóng gói hàng hoàn trả, người mua cần chuẩn bị những vật liệu gì và phải lưu ý điều gì?
+Filter : (không lọc)
+Gold   : Chuẩn bị vật liệu đóng gói (hộp carton/bao bì, băng dính, vật liệu chèn) và phiếu gửi hàng; phải quay video quá trình đóng gói; dùng thêm hộp vận chuyển bên ngoài và không dán/viết lên hộp của nhà sản xuất.
+Marker : 'hộp vận chuyển bên ngoài'
+  1. score=+0.709  doc_id=chinh-sach-tra-hang-hoan-tien              audience=buyer   evidence=[ ]
+       6. YÊU CẦU ĐỐI VỚI SẢN PHẨM HOÀN TRẢ Để hạn chế các rủi ro phát sinh liên quan đến việc ...
+  2. score=+0.686  doc_id=cach-dong-goi-don-hoan-tra                 audience=buyer   evidence=[✓]
+       # [Trả hàng/Hoàn tiền] Cách đóng gói đơn hàng hoàn trả Bạn cần đóng gói và quay video qu...
+  3. score=+0.634  doc_id=chinh-sach-van-chuyen                      audience=both    evidence=[ ]
+       1. Yêu cầu chung a. Tất cả các bưu kiện đều phải được đóng gói sẵn sàng, được niêm phong...
+  → gold doc: CÓ · marker: CÓ · hạng chunk chứa đáp án: 2 · điểm: 1/2
+
+=== A/B trên Q3 — metadata_filter có tác dụng không? ===
+  KHÔNG lọc:
+  1. score=+0.836  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[✓]
+       7. TRÁCH NHIỆM VỀ CHI PHÍ VẬN CHUYỂN HOÀN TRẢ SẢN PHẨM CỦA NGƯỜI BÁN 7.1. Người Bán sẽ c...
+  2. score=+0.765  doc_id=chinh-sach-van-chuyen                      audience=both    evidence=[ ]
+       4. Bồi thường a. Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiế...
+  3. score=+0.764  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[ ]
+       7.2. Người Bán sẽ không phải chịu bất kỳ chi phí vận chuyển cho việc trả hàng chiều hoàn...
+  CÓ lọc:
+  1. score=+0.836  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[✓]
+       7. TRÁCH NHIỆM VỀ CHI PHÍ VẬN CHUYỂN HOÀN TRẢ SẢN PHẨM CỦA NGƯỜI BÁN 7.1. Người Bán sẽ c...
+  2. score=+0.764  doc_id=chinh-sach-tra-hang-hoan-tien-nguoi-ban    audience=seller  evidence=[ ]
+       7.2. Người Bán sẽ không phải chịu bất kỳ chi phí vận chuyển cho việc trả hàng chiều hoàn...
+  3. score=+0.758  doc_id=dieu-khoan-shopee-mall                     audience=seller  evidence=[ ]
+       1.9.3. Chi phí vận chuyển và xử lý Sản Phẩm Hoàn Trả và giao không thành công: a. Người ...
+  → hai lượt giống hệt nhau: KHÔNG — filter có tác dụng
+
+=== TỔNG HỢP (theo docs/SCORING.md) ===
+  Q1  evidence_rank=1   điểm=2/2   số liệu
+  Q2  evidence_rank=—   điểm=0/2   điều kiện + mốc thời gian
+  Q3  evidence_rank=1   điểm=2/2   điều kiện — CẦN metadata_filter
+  Q4  evidence_rank=1   điểm=2/2   quy trình + số liệu
+  Q5  evidence_rank=2   điểm=1/2   liệt kê
+
+  Hit@1 = 3/5 (60%) · Hit@3 = 4/5 (80%) · MRR = 0.700
+  lab_score = 7/10
